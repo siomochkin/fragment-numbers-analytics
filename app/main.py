@@ -50,7 +50,8 @@ try:
                 values = (datetime.now(), price, ton, phone, status, data)
                 cursor.execute(query, values)
                 connection.commit()
-                time.sleep(57)
+                print(values)
+                time.sleep(56)
         except Exception as e:
             connection.rollback()
             print('Error: ', e)

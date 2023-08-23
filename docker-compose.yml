@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: fragment-app
+    image: fragment-app
+    build: .
+    command: python3 app/main.py
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+    ports:
+      - 5000:5000
+    depends_on:
+      - db
+
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOSTNAME}
+    ports:
+      - 5432:5432
+
+  pgweb:
+    image: sosedoff/pgweb
+    ports:
+      - "8081:8081"
+    environment:
+      - DATABASE_URL=postgresql://postgres:123@db/frgmnt?sslmode=disable
+    depends_on:
+      - db

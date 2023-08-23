@@ -12,7 +12,7 @@ try:
     # Create table numbers
     with connection.cursor() as cursor:
         cursor.execute(
-            """CREATE TABLE numbers(
+            """CREATE TABLE IF NOT EXISTS numbers(
                 id SERIAL PRIMARY KEY,
                 date TIMESTAMPTZ NOT NULL,
                 price NUMERIC(8,2) NOT NULL,
@@ -22,7 +22,7 @@ try:
                 remaining_time VARCHAR(50) NOT NULL
                 );"""
         )
-        # connection.commit()
+        connection.commit()
         print(f"Server version: {cursor.fetchone()}")
     
 except (Exception, psycopg2.Error) as error:
