@@ -1,4 +1,4 @@
-# Fragment number analytic #
+# Fragment numbers analytics #
 
 The project was developed for pasring data from the website https://fragment.com to create statistics on the cost of Telegram numbers.
 
