@@ -51,7 +51,7 @@ try:
                 cursor.execute(query, values)
                 connection.commit()
                 print(values)
-                time.sleep(56)
+                time.sleep(60)
         except Exception as e:
             connection.rollback()
             print('Error: ', e)

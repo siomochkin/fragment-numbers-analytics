@@ -29,12 +29,3 @@ services:
       - POSTGRES_HOST=${DB_HOSTNAME}
     ports:
       - 5432:5432
-
-  pgweb:
-    image: sosedoff/pgweb
-    ports:
-      - "8081:8081"
-    environment:
-      - DATABASE_URL=postgresql://postgres:123@db/frgmnt?sslmode=disable
-    depends_on:
-      - db
