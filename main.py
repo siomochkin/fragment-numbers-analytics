@@ -47,6 +47,6 @@ while True:
         csv_writer = csv.writer(file)
         csv_writer.writerow(values)
         print(values)
-        time.sleep(3)
+        time.sleep(59)
        
         
