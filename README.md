@@ -24,15 +24,7 @@ pip install -r requirements.txt
 ```
 
 ## Start
-First of all create database through pgadmin4 and fill in the variables in the .env file using the example of .env.example file. Now create table 'numbers' in DB just running the database.py file:
-
-```
-python3 database.py
-```
-
-You can check if it has appeared in the database using pgadmin4 (databases -> schemas -> tables)
-
-Finally, you can run main.py file to start writing data from the website to your DB:
+Run main.py file to start writing data from the website to your csv file:
 
 ```
 python3 main.py
