@@ -1,9 +1,10 @@
 import time
 import csv
-from main import *
+from sold.main import *
+from datetime import datetime
 
 def main():
-    url_fragment = 'https://fragment.com/numbers?sort=ending&filter=sold'
+    url_fragment = 'https://fragment.com/numbers?sort=price_asc&filter=sale'
     url_coinmarket = 'https://coinmarketcap.com/en/currencies/toncoin/'
 
     while True:   
@@ -20,12 +21,11 @@ def main():
         price_data = str(coinmarket)[str(coinmarket).find('The live Toncoin price today'):]
         price = float(price_data[price_data.find('$')+1:price_data.find('USD')]) * float(ton)
 
-        sold_time = get_sold_time(fragment)
-        formatted_sold_time = convert_to_datetime_and_format(sold_time)
+        data = get_remaining_time(fragment)
         
-        values = (formatted_sold_time, str(price), str(ton), str(phone), str(status))
+        values = (str(datetime.now()), str(data), str(price), str(ton), str(phone), str(status))
 
-        with open('sold.csv', 'a+') as file:
+        with open('numbers.csv', 'a+') as file:
             csv_writer = csv.writer(file)
             csv_writer.writerow(values)
             print(values)
