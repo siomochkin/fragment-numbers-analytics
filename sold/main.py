@@ -45,7 +45,7 @@ def get_sold_time(soup):
     return data
 
 def get_remaining_time(soup):
-    data_find = str(soup)[str(soup).find('"text" datetime='):]
+    data_find = str(soup)[str(soup).find('data-relative="text"'):]
     data = get_data_between_markers(data_find, '>', '<')
     param1 = ['days', 'day', 'hours', 'hour']
     param2 = ['minutes', 'minute', ' ']
