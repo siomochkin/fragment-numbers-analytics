@@ -23,14 +23,14 @@ def main():
 
         data = get_remaining_time(fragment)
         
-        values = (str(datetime.now()), str(data), str(price), str(ton), str(phone), str(status))
+        values = (str(datetime.now()), str(data), str(round(price, 2)), str(ton), str(phone), str(status))
 
-        with open('numbers.csv', 'a+') as file:
+        with open('../buy-numbers.csv', 'a+') as file:
             csv_writer = csv.writer(file)
             csv_writer.writerow(values)
             print(values)
         
-        time.sleep(60)
+        time.sleep(55)
        
 if __name__ == '__main__':
     main()

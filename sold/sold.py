@@ -2,6 +2,7 @@ import time
 import csv
 from main import *
 
+
 def main():
     url_fragment = 'https://fragment.com/numbers?sort=ending&filter=sold'
     url_coinmarket = 'https://coinmarketcap.com/en/currencies/toncoin/'
@@ -23,14 +24,14 @@ def main():
         sold_time = get_sold_time(fragment)
         formatted_sold_time = convert_to_datetime_and_format(sold_time)
         
-        values = (formatted_sold_time, str(price), str(ton), str(phone), str(status))
+        values = (formatted_sold_time, str(round(price, 2)), str(ton), str(phone), str(status))
 
-        with open('sold.csv', 'a+') as file:
+        with open('sold-numbers.csv', 'a+') as file:
             csv_writer = csv.writer(file)
             csv_writer.writerow(values)
             print(values)
         
-        time.sleep(60)
+        time.sleep(55)
        
 if __name__ == '__main__':
     main()
