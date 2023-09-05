@@ -31,7 +31,7 @@ def main():
                 csv_writer.writerow(values)
                 print(values)
             
-            time.sleep(5)
+            time.sleep(55)
         
         except Exception as e:
             print(e)

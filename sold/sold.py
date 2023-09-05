@@ -27,7 +27,7 @@ def main():
             
             values = (formatted_sold_time, round(price, 2), ton, phone, status)
 
-            with open('sold/sold-numbers.csv', 'a+') as file:
+            with open('sold-numbers.csv', 'a+') as file:
                 csv_writer = csv.writer(file)
                 csv_writer.writerow(values)
                 print(values)
