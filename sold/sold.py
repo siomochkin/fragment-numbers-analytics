@@ -19,8 +19,8 @@ def main():
             status = get_number_status(fragment)
             ton = get_price_in_ton(fragment)
 
-            price_data = str(coinmarket)[str(coinmarket).find('The live Toncoin price today'):]
-            price = float(price_data[price_data.find('$')+1:price_data.find('USD')]) * float(ton)
+            price_data = get_price_in_dollars(coinmarket)
+            price = float(price_data) * float(ton)
 
             sold_time = get_sold_time(fragment)
             formatted_sold_time = convert_to_datetime_and_format(sold_time)

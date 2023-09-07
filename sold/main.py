@@ -31,11 +31,17 @@ def get_number_status(soup):
     status = get_data_between_markers(status_find, '>', '<')
     return status
 
-# Get price 
+# Get price in ton
 def get_price_in_ton(soup):
     ton_find = str(soup)[str(soup).find('icon-ton'):]
     ton = get_data_between_markers(ton_find, '>', '<')
     return ton
+
+def get_price_in_dollars(soup):
+    price_find = str(soup)[str(soup).find('The live Toncoin price today'):]
+    price = get_data_between_markers(price_find, '$', 'USD')
+    price = price.replace(',', '.')
+    return price
 
 # Get time
 def get_sold_time(soup):
@@ -44,6 +50,7 @@ def get_sold_time(soup):
     data = data.replace('at ', '')
     return data
 
+# Get remaining time
 def get_remaining_time(soup):
     data_find = str(soup)[str(soup).find('data-relative="text"'):]
     data = get_data_between_markers(data_find, '>', '<')
